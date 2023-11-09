@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'navbar.html' %}
+<section id="main" class="d-flex align-items-center container">
+    <div>
+        <div>
+            <img src="{% static 'images/nature.jpg' %}" class="main-img" width="140px" alt="Habibullo">
+            <div class="main-detail">
+                <h1 class="main-title">Habibullo</h1>
+                <div class="job-title">Software Engineer</div>
+                <div class="social-links">
+                    <a class="icon-telegram" target="_blank" href=""> 
+                        <img src="{% static 'images/icons/telegram.svg' %}" width="22" />
+                    </a>
+                    <a class="icon-github" target="_blank" href="https://github.com/">
+                        <img src="{% static 'images/icons/github.svg' %}" width="22" alt="github">
+                    </a>
+                    <a class="icon-linkedin" target="_blank" href=""> 
+                        <img src="{% static 'images/icons/linkedin.svg' %}" width="22"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="description">
+            <p class="text">
+                I write about non-technical stuff in the technical world.
+            </p>
+            <div class="btn-wrapper mb-3">
+                <a href="{% url 'blog' %}" class="blog-btn">Read Blog</a>
+                <a href="{% url 'about' %}" class="about-btn">About Me</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include 'footer.html' %}
+{% endblock content %}

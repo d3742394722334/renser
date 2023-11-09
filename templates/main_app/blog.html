@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<header id="navbar">{% include 'navbar.html' %}</header>
+<div class="page-title">BLOG</div>
+
+<section class="d-flex align-items-center">
+    <div class="container">
+        <div class="row justify-content-between align-top mt-3">
+            <div id="archive" class="col-md-7">
+                {% regroup posts by time.year as posts_by_year %}
+                {% for year_group in posts_by_year %}
+                    <h4 class="sticky">{{ year_group.grouper }}</h4>
+                    {% regroup year_group.list by time|date:"F" as posts_by_month %}
+                    {% for month_group in posts_by_month %}
+                        <div>{{ month_group.grouper }}</div>
+                        <ul class="list-wrapper">
+                            {% for post in month_group.list %}
+                                <li>
+                                    <a class="list-item" href="{% url 'blog_detail' post.slug %}">
+                                        <div class="date">{{post.time|date:"j F, Y"}}</div>
+                                        <p>{{post.title}}</p>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include 'footer.html' %}
+{% endblock content %}

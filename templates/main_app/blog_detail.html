@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'navbar.html' %}
+<div class="progress-bar">
+  <div class="bar"></div>
+</div>
+<div class="container mt-3">
+  <div class="row justify-content-center">
+    <article class="col-lg-8 col-md-10 col-12">
+      <h1>{{ post.title }}</h1>
+      <p class="mt-3" style="color: rgba(0, 0, 0, 0.4);">{{post.time| date:'j F, Y'}}</p>
+      <div class="line mt-4 mb-4"></div>
+      
+      <p>
+        {{ post.content | safe }}
+      </p>
+
+      <ul class="custom-pagination col-md-8 col-12 mt-5 mb-5">
+        <div class="pagination-list row">
+          <li class="col prev">
+            {% if previous_post %}
+              <a href="{% url 'blog_detail' previous_post.slug %}" title="{{previous_post.title}}">&larr; Previous</a>
+            {% endif %}
+          </li>
+          <li class="col">
+            <a href="{% url 'blog' %}">See More</a>
+          </li>
+          <li class="col next">
+            {% if next_post %}
+              <a href="{% url 'blog_detail' next_post.slug %}" title="{{next_post.title}}">Next &rarr;</a>
+            {% endif %}
+          </li>
+        </div>
+      </ul>
+    </article>
+  </div>
+</div>
+
+{% include 'footer.html' %}
+{% endblock content %}

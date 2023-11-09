@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<header id="navbar">{% include 'navbar.html' %}</header>
+<div class="page-title">ABOUT ME</div>
+<section id="about-me" class="d-flex align-items-center mt-4">
+  <div class="container">
+    <div class="row justify-content-center">
+      <article class="col-lg-8 col-md-10 col-12">
+        <p>
+          I am Habibullo, a 15-years-old
+          <strong>Software Engineer</strong> from Samarkand, Uzbekistan.
+          <!-- currently living in Warsaw, Poland. -->
+        </p>
+        <p>
+            I'm a Backend Developer. Besides that, I also build high-quality apps using Flutter.
+        </p>
+        <p>
+          In short it's me, Habibullo a friendly programmer from Uzbekistan.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+{% include 'footer.html' %}
+{% endblock content %}
